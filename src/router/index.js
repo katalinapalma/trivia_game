@@ -7,21 +7,21 @@ import Result from '../views/ResultView.vue'
 Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/',
-        name: 'Start',
-        component: Start
-    },
-    {
-        path: '/questions',
-        name: 'Question',
-        component: Questions
-    },
-    {
-        path: '/result',
-        name: 'Result',
-        component: Result
-    }
+  {
+    path: '/',
+    name: 'Start',
+    component: Start
+  },
+  {
+    path: '/questions',
+    name: 'Question',
+    component: Questions
+  },
+  {
+    path: '/result',
+    name: 'Result',
+    component: Result
+  }
 ];
 
 const router = new VueRouter({ 
