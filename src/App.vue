@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <StartScreen msg="Second JavaScript assignment"/>
+    <User msg="Second JavaScript assignment"/>
   </div>
 </template>
 
 <script>
-import StartScreen from './components/StartScreen.vue'
+import User from './components/StartScreen.vue'
 
 export default {
   name: 'App',
   components: {
-    StartScreen
+    User
   }
 }
 </script>
