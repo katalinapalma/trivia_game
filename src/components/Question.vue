@@ -11,9 +11,9 @@
       </div>
       <div class="questionChoices">
         <ol class="questionChoicesList">
-          <li class="questionChoice" v-for="option in composeAnswers" :key="option">
-            <button>X</button>
-            {{option}}
+          <li class="questionChoice" v-for="answer in composeAnswers" :key="answer">
+            <button @click="nextQuestion">X</button>
+            {{answer}}
           </li>
         </ol>
       </div>
@@ -27,10 +27,18 @@ export default {
   props: {
     question: Object,
   },
-  computed: {
+  computed: { 
     composeAnswers() {
       return [...this.question.incorrect_answers, this.question.correct_answer]
     }
+  },
+  methods: { // Emitter to change to next question?
+    nextQuestion() {
+
+    }
+  },
+  data() { // Show question depening on which one is active ____
+    activeQuestion:
   }
 }
 </script>
