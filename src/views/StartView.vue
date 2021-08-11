@@ -33,9 +33,9 @@ export default {
       }
     },
     startGame() {
-      const questions = this.getQuestions().then(
+      this.getQuestions().then(questions => {
         this.$router.push({ name: 'Question', params: { questions }})
-      )
+      })
       
     }
   }
