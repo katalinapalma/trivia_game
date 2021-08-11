@@ -7,7 +7,7 @@
         <Card title="Difficulty" defaultOption="Choose difficulty" />
         <Card title="Number of questions" defaultOption="Choose number of questions" />
       </div>
-      <button class="startBtn">Start</button>
+      <button class="startBtn" @click="startGame">Start</button>
     </div>
   </div>
 </template>
@@ -18,6 +18,23 @@ import Card from '../components/Card.vue'
 export default {
   components: {
     Card
+  },
+  methods: {
+    async getQuestions() {
+      const response = await fetch('https://opentdb.com/api.php?amount=10')
+      if(response.ok) {
+        const questions = await response.json();
+        return questions;
+      }
+      else {
+        const message = `An error has occured: ${response.status}`;
+        throw new Error(message);
+      }
+    },
+    startGame() {
+      const questions = this.getQuestions();
+      
+    }
   }
 }
 </script>
