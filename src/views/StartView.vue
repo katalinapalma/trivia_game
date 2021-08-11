@@ -24,6 +24,7 @@ export default {
       const response = await fetch('https://opentdb.com/api.php?amount=10')
       if(response.ok) {
         const questions = await response.json();
+        console.log(questions);
         return questions;
       }
       else {
@@ -32,7 +33,9 @@ export default {
       }
     },
     startGame() {
-      const questions = this.getQuestions();
+      const questions = this.getQuestions().then(
+        this.$router.push({ name: 'Question', params: { questions }})
+      )
       
     }
   }
