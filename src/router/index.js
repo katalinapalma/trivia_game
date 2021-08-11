@@ -1,27 +1,27 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Start from '../views/StartView.vue'
-import Questions from '../views/QuestionView.vue'
+import Question from '../views/QuestionView.vue'
 import Result from '../views/ResultView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/',
-        name: 'Start',
-        component: Start
-    },
-    {
-        path: '/questions',
-        name: 'Question',
-        component: Questions
-    },
-    {
-        path: '/result',
-        name: 'Result',
-        component: Result
-    }
+  {
+    path: '/',
+    name: 'Start',
+    component: Start
+  },
+  {
+    path: '/questions',
+    name: 'Question',
+    component: Question
+  },
+  {
+    path: '/result',
+    name: 'Result',
+    component: Result
+  }
 ];
 
 const router = new VueRouter({ 
