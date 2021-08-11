@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="imageWrapper">
+    <div class="backgroundWrapper">
       <h1 class="title">Trivia Game</h1>
       <div class="cardWrapper">
         <Card title="Category" defaultOption="Choose category" />
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Card from '../components/Card.vue'
+import Card from '../components/Cards/SmallCard.vue'
 
 export default {
   components: {
@@ -31,11 +31,9 @@ export default {
     position: absolute;
     text-transform: uppercase;
   }
-  .imageWrapper {
+  .backgroundWrapper {
     width: 100%;
-    height: 100vh;
-    background: rgb(114,225,209);
-    background: radial-gradient(circle, rgba(114,225,209,1) 0%, rgba(207,138,252,1) 100%);
+    min-height: 100vh;
   }
   .overlay {
     width: 100%;
