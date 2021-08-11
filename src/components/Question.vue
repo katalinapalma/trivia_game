@@ -8,8 +8,8 @@
     </h2>
     <ol>
       <li v-for="choice in choices" :key="choice">
+        <button>X</button>
         {{choice}}
-        <button>Choose</button>
       </li>
     </ol>
   </div>
@@ -24,3 +24,7 @@ export default {
   }
 }
 </script>
+
+<style>
+
+</style>
