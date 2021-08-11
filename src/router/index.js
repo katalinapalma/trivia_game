@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Start from '../views/StartView.vue'
-import Questions from '../views/QuestionView.vue'
+import Question from '../views/QuestionView.vue'
 import Result from '../views/ResultView.vue'
 
 Vue.use(VueRouter)
@@ -15,7 +15,7 @@ const routes = [
   {
     path: '/questions',
     name: 'Question',
-    component: Questions
+    component: Question
   },
   {
     path: '/result',
