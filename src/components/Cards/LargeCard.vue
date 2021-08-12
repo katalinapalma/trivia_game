@@ -4,7 +4,7 @@
       <p class="question">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi voluptatum vitae quia nisi! Velit adipisci in?
       </p>
-      <div class="answers" v-show="show">
+      <div class="answers">
         <p class="correctAnswer">
           Correct answer: Lorem ipsum dolor.
         </p>

@@ -10,7 +10,6 @@
       <div class="cardWrapper">
         <h2 class="questionsTitle">Questions</h2>
         <LargeCard />
-        <LargeCard />
       </div>
 
     </div>
