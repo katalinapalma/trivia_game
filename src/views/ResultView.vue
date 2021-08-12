@@ -4,7 +4,7 @@
 
       <div class="yourResultDiv">
         <h1 class="yourResultTitle">Your Result</h1>
-        <h2 class="result">7/10</h2>
+        <h2 class="result">{{ this.score }}</h2>
       </div>
 
       <div class="cardWrapper">
@@ -18,11 +18,19 @@
 
 <script>
   import LargeCard from '../components/Cards/LargeCard.vue'
+  import { mapState, mapMutations } from 'vuex'
+
 
   export default {
     components: {
       LargeCard
-    }
+    },
+    methods: {
+    ...mapMutations(['setScore']),
+    },
+    computed: {
+		...mapState(['score']),
+	},
   }
 </script>
 
@@ -42,7 +50,7 @@
     width: 100%;
     flex-direction: column;
   }
-  .yourResultTitle {
+  .yourResultTitle, .result {
     font-family: Raleway;
     font-size: 80px;
     letter-spacing: 0.1em;
@@ -58,6 +66,9 @@
     font-size: 70px;
     text-transform: uppercase;
   }
+  .result {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+  }
   .cardWrapper {
     width: 100%;
     position: absolute;
@@ -69,10 +80,11 @@
     top: 300px;
   }
   .questionsTitle {
+    margin-top: 50px;
+    margin-bottom: -20px;
     color: #fff;
     text-transform: uppercase;
-    margin-bottom: -20px;
-    font-size: 25px;
-    font-weight: 200;
+    font-size: 30px;
+    font-weight: 500;
   }
 </style>

@@ -146,7 +146,7 @@ export default {
   }
 
   label .checkmark:after {
-    top: 3px;
+    top: 4px;
     left: 4px;
     width: 12px;
     height: 12px;

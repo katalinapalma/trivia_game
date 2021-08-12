@@ -59,13 +59,6 @@ export default {
 		flex-direction: column;
 	}
 	.nextQuestionBtn {
-		/* padding: 20px;
-		border: none;
-		background-color: #fff;
-		width: 200px;
-		font-size: 25px;
-		border-radius: 10px;
-		margin-top: 70px; */
 		width: 200px;
     padding: 15px;
     border: none;
