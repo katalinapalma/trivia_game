@@ -1,8 +1,9 @@
 <template>
   <div class="card">
     <h1 class="title">{{ title }}</h1>
-    <select name="category" class="select">
+    <select name="category" v-for="category in categories" :key="category" class="select">
       <option value="category">{{ defaultOption }}</option>
+      <option v-for="option in category" :key="option.id">{{ option.name }}</option>
     </select> 
   </div>
 </template>
@@ -13,6 +14,7 @@
     props: {
       title: String,
       defaultOption: String,
+      categories: Array
     }
   }
 </script>
