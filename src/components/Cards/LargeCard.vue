@@ -12,7 +12,7 @@
           Your answer: Lorem ipsum dolor.
         </p>
       </div>
-      <button class="showAnswerBtn" @click="showAnswer"> {{ show ? 'Hide answers' : 'Show answers' }}</button>
+      <!-- <button class="showAnswerBtn" @click="showAnswer"> {{ show ? 'Hide answers' : 'Show answers' }}</button> -->
     </div>
   </div>
 </template>

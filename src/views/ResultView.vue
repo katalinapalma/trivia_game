@@ -43,8 +43,19 @@
     width: 100%;
     flex-direction: column;
   }
-  .yourResultTitle, .result {
-    color: #fff;
+  .yourResultTitle {
+    font-family: Raleway;
+    font-size: 80px;
+    letter-spacing: 0.1em;
+    font-weight: 900;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #a4d881;
+    text-shadow: 1px 0px #b7fc8a, 9px 4px 0px #737373;
+    text-transform: uppercase;
+  }
+  .yourResultDiv .result {
+    color: #b7fc8a;
     font-size: 70px;
     text-transform: uppercase;
   }
