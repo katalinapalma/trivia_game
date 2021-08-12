@@ -1,20 +1,15 @@
 <template>
   <div class="card">
     <h1 class="title">{{ title }}</h1>
-    <select name="category" v-for="category in categories" :key="category" class="select">
-      <option value="category">{{ defaultOption }}</option>
-      <option v-for="option in category" :key="option.id">{{ option.name }}</option>
-    </select> 
+    <input type="text" class="numberOfQuestionsInput">
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Card',
+    name: 'QuestionsCard',
     props: {
       title: String,
-      defaultOption: String,
-      categories: Array
     }
   }
 </script>
@@ -48,5 +43,11 @@
     box-shadow: 0 4px 20px 0 rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
+  }
+  .numberOfQuestionsInput {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
   }
 </style>
