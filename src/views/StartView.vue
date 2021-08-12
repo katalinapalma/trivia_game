@@ -3,7 +3,7 @@
     <div class="backgroundWrapper">
       <h1 class="title">Trivia Game</h1>
       <div class="cardWrapper">
-        <Card title="Category" defaultOption="Choose category" />
+        <Card title="Category" defaultOption="Choose category" :categories="this.categories"/>
         <Card title="Difficulty" defaultOption="Choose difficulty" />
         <Card title="Number of questions" defaultOption="Choose number of questions" />
       </div>
@@ -13,11 +13,23 @@
 </template>
 
 <script>
-import Card from '../components/Cards/SmallCard.vue'
+import Card from '../components/Card.vue'
+import { mapState, mapMutations, mapActions } from 'vuex'
 
 export default {
   components: {
     Card
+  },
+	methods: {
+		...mapMutations(['setCategories']),
+		...mapActions(['fetchCategories'])
+	},
+	computed: {
+		...mapState(['categories'])
+	},
+  created() {
+    this.fetchCategories()
+    
   }
 }
 </script>
