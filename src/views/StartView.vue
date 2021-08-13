@@ -17,6 +17,7 @@ import Card from '../components/Cards/CategoryCard.vue'
 import DifficultyCard from '../components/Cards/DifficultyCard.vue'
 import QuestionsCard from '../components/Cards/QuestionsCard.vue'
 import { mapState, mapMutations, mapActions } from 'vuex'
+
 export default {
   components: {
     Card,
@@ -24,9 +25,10 @@ export default {
     QuestionsCard
   },
 	methods: {
-		...mapMutations(['setCategories']),
-		...mapActions(['fetchCategories', 'fetchToken']),
-    startGame() {
+		...mapMutations(['setCategories', 'setQuestionsFetched']),
+		...mapActions(['fetchCategories', 'fetchToken','fetchQuestions']),
+    async startGame() {
+      await this.fetchQuestions()
       this.$router.push('question')
     }
 	},
@@ -47,7 +49,7 @@ export default {
 
 <style scoped>
   .title {
-    font-size: 10em;
+    font-size: 8em;
     color: #fff;
     top: 60px;
     width: 100%;

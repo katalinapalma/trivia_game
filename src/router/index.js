@@ -10,8 +10,10 @@ Vue.use(VueRouter)
 function guardRoute(to, from, next) {
   if(store.state.questionsFetched === true) {
     next()
+    console.log('hej');
   }
   else {
+    console.log('runs');
     next({
       path: '/'
     })

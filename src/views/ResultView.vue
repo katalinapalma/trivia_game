@@ -26,14 +26,16 @@
       ResultCard
     },
     methods: {
-    ...mapMutations(['setScore', 'setUserAnswers']),
-    ...mapActions(['resetScore']),
+    ...mapMutations(['setScore', 'setUserAnswers', 'setQuestions']),
+    ...mapActions(['resetScore', 'fetchQuestions']),
     startPage() {
       this.$router.push('/')
     },
-    replayGame() {
+    async replayGame() {
       this.setUserAnswers('')
       this.resetScore()
+      this.setQuestions('')
+      await this.fetchQuestions()
       this.$router.push('question')
     }
     },

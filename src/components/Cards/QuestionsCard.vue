@@ -19,7 +19,6 @@ import { mapMutations } from 'vuex'
         this.setSelectedNumberOfQuestions(this.numberOfQuestions)
       }
     },
-    
     data() {
       return {
         numberOfQuestions: ''
