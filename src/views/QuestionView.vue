@@ -21,7 +21,6 @@ export default {
 		...mapMutations(['setScore']),
 		nextQuestion() {
 			if(this.userAnswers[this.userAnswers.length-1] === this.questions[this.index].correct_answer) {
-				console.log(this.questions[this.index].correct_answer);
 				this.setScore(10)
 			}
 			this.index += 1;
@@ -39,7 +38,6 @@ export default {
 		}
 	},
 	async created() {
-		// fetch questions
 		await this.fetchQuestions()
 	},
 	data() {

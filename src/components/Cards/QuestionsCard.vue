@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h1 class="title">{{ title }}</h1>
-    <input type="text" class="numberOfQuestionsInput">
+    <input class="numberOfQuestionsInput" type="text" name="numberOfQuestions" v-model="numberOfQuestions">
   </div>
 </template>
 
@@ -10,6 +10,11 @@
     name: 'QuestionsCard',
     props: {
       title: String,
+    },
+    data() {
+      return {
+        numberOfQuestions: ''
+      }
     }
   }
 </script>
