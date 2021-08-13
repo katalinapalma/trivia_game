@@ -13,7 +13,7 @@ const routes = [
     component: Start
   },
   {
-    path: '/questions',
+    path: '/question',
     name: 'Question',
     component: Question
   },

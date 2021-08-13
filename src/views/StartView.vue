@@ -3,33 +3,38 @@
     <div class="backgroundWrapper">
       <h1 class="title">Trivia Game</h1>
       <div class="cardWrapper">
-        <Card title="Category" defaultOption="Choose category" :categories="this.categories"/>
-        <Card title="Difficulty" defaultOption="Choose difficulty" />
-        <Card title="Number of questions" defaultOption="Choose number of questions" />
+        <Card title="Category" defaultOption="Choose category" :categories="this.categories" />
+        <DifficultyCard title="Difficulty" defaultOption="Choose difficulty" />
+        <QuestionsCard title="Number of questions" />
       </div>
-      <button class="startBtn">Start</button>
+      <button class="startBtn" @click="startGame">Start</button>
     </div>
   </div>
 </template>
 
 <script>
-import Card from '../components/Card.vue'
+import Card from '../components/Cards/CategoryCard.vue'
+import DifficultyCard from '../components/Cards/DifficultyCard.vue'
+import QuestionsCard from '../components/Cards/QuestionsCard.vue'
 import { mapState, mapMutations, mapActions } from 'vuex'
-
 export default {
   components: {
-    Card
+    Card,
+    DifficultyCard,
+    QuestionsCard
   },
 	methods: {
 		...mapMutations(['setCategories']),
-		...mapActions(['fetchCategories'])
+		...mapActions(['fetchCategories']),
+    startGame() {
+      this.$router.push('Question')
+    }
 	},
 	computed: {
 		...mapState(['categories'])
 	},
   created() {
     this.fetchCategories()
-    
   }
 }
 </script>
@@ -65,17 +70,18 @@ export default {
     top: 280px;
   }
   .startBtn {
-    width: 300px;
+    width: 220px;
     padding: 15px;
     border: none;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 28px;
     margin-top: 660px;
     color: rgb(200 145 248);
     text-transform: uppercase;
     transition: 0.5s; 
     background-color: rgb(200 145 248);
     color: #fff;
+    font-weight: 600;
   }
   .startBtn:hover {
     background-color: #fff;

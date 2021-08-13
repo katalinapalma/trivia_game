@@ -12,14 +12,13 @@
           Your answer: Lorem ipsum dolor.
         </p>
       </div>
-      <!-- <button class="showAnswerBtn" @click="showAnswer"> {{ show ? 'Hide answers' : 'Show answers' }}</button> -->
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'LargeCard',
+    name: 'ResultCard',
     data: () => {
       return {
         show: false,
@@ -72,22 +71,5 @@
   }
   .yourAnswer {
     font-style: italic;
-  }
-  .showAnswerBtn {
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    margin-top: 20px;
-    font-size: 15px;
-    color: rgb(200 145 248);
-    transition: 0.5s; 
-    background: rgb(99, 146, 177);
-    color: #fff;
-  }
-  .showAnswerBtn:hover {
-    background: rgb(152, 235, 222);
-    background: rgb(132, 183, 218);
-    transition: 0.3s; 
-    cursor: pointer;
   }
 </style>

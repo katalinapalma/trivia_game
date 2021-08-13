@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         questions: null,
-        categories: '',
+        categories: null,
         userAnswers: '',
         score: 0,
         error: ''
