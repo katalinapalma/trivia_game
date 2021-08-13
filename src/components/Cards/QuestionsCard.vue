@@ -32,9 +32,9 @@
     text-transform: uppercase;
     font-size: 22px;
   }
-  .select {
+  .numberOfQuestionsInput {
     padding: 15px;
-    width: 80%;
+    width: 70%;
     border-radius: 10px;
     margin: 20px;
     font-size: 16px;
@@ -43,11 +43,5 @@
     box-shadow: 0 4px 20px 0 rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
-  }
-  .numberOfQuestionsInput {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
   }
 </style>

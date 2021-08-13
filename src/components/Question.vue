@@ -69,19 +69,10 @@ export default {
 </script>
 
 <style scoped>
-
-  /* .questionContainer {
-    background-color: red;
-  } */
-  /* .questionHeader {
-    background-color: blue;
-  } */
   .questionChoices {
     display: flex;
     justify-content: center;
     width: 550px;
-    /* width: 100%; */
-    /* height: 250px; */
     padding: 20px;
     backdrop-filter: blur(25px);
     background-color: rgba(255, 255, 255, 0.1);
@@ -90,11 +81,9 @@ export default {
     transition: 0.3s;
     border-radius: 30px;
     margin: auto;
-
   }
   .questionChoicesList {
     font-size: 25px;
-    /* background-color: yellow; */
     list-style-type: none;
   }
   .questionChoice {
@@ -105,7 +94,6 @@ export default {
     color: #fff;
     font-size: 2em;
   }
-
   label {
     display: block;
     position: relative;
@@ -118,13 +106,11 @@ export default {
     -ms-user-select: none;
     user-select: none;
   }
-
   label input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
   }
-
   .checkmark {
     position: absolute;
     top: -25px;
@@ -134,17 +120,14 @@ export default {
     background-color: #eee;
     border-radius: 50%;
   }
-
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-
   label input:checked ~ .checkmark:after {
     display: block;
   }
-
   label .checkmark:after {
     top: 4px;
     left: 4px;
@@ -153,5 +136,4 @@ export default {
     border-radius: 50%;
     background: rgb(207 138 252);
   }
-
 </style>

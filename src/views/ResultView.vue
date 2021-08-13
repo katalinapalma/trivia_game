@@ -1,29 +1,27 @@
 <template>
   <div>
     <div class="backgroundWrapper">
-
       <div class="yourResultDiv">
         <h1 class="yourResultTitle">Your Result</h1>
         <h2 class="result">{{ this.score }}</h2>
       </div>
 
       <div class="cardWrapper">
-        <h2 class="questionsTitle">Questions</h2>
-        <LargeCard />
+        <h2 class="questionsTitle">Questions & Answers</h2>
+        <ResultCard />
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
-  import LargeCard from '../components/Cards/LargeCard.vue'
+  import ResultCard from '../components/Cards/ResultCard.vue'
   import { mapState, mapMutations } from 'vuex'
 
 
   export default {
     components: {
-      LargeCard
+      ResultCard
     },
     methods: {
     ...mapMutations(['setScore']),
