@@ -13,4 +13,4 @@ The question page displays one question at a time. When the user has answered a 
 The result page shows the user's score, all questions the user answered along with the correct answer and answer the user chose. The user also has the option to replay the game with the same category and difficulty settings but with different questions or to go back to the Start page.
 
 ## Check out the game 
-link to heroku
+https://still-meadow-30875.herokuapp.com/
