@@ -18,16 +18,23 @@ export default {
 	methods: {
 		...mapMutations(['setScore', 'setUserAnswers']),
 		nextQuestion() {
+			// Saves user answers for each question
 			this.setUserAnswers([...this.userAnswers, this.selectedAnswer])
+			// If answer is correct, add 10 points to score
 			if(this.userAnswers[this.userAnswers.length-1] === this.questions[this.index].correct_answer) {
 				this.setScore(10)
 			}
-			
+			// Keep track of question #
 			this.index += 1;
-
+			// If user has chosen only to get 1 questions, set that questions as the last question
+			if(this.questions.length === 1) {
+				this.lastQuestion = true
+			}
+			// When on last question, go to results instead of next question.
 			if(this.lastQuestion === true)
 				this.$router.push('result')
-			if(this.index === this.questions.length-1) {
+			// If next question is the last one, mark it as last question
+			if(this.index === this.questions.length-1 ) {
 				this.lastQuestion = true
 			}
 		}

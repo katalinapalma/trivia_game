@@ -32,6 +32,7 @@
       this.$router.push('/')
     },
     async replayGame() {
+      // Reset all data, get new questions and go to question screen
       this.setUserAnswers('')
       this.resetScore()
       this.setQuestions('')

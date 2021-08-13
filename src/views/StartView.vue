@@ -7,7 +7,9 @@
         <DifficultyCard title="Difficulty" defaultOption="Choose difficulty" :difficulties="this.difficulties" />
         <QuestionsCard title="Number of questions" />
       </div>
+      <p class="error" v-if="error">{{error}}</p>
       <button class="startBtn" @click="startGame">Start</button>
+      
     </div>
   </div>
 </template>
@@ -28,12 +30,25 @@ export default {
 		...mapMutations(['setCategories', 'setQuestionsFetched']),
 		...mapActions(['fetchCategories', 'fetchToken','fetchQuestions']),
     async startGame() {
-      await this.fetchQuestions()
-      this.$router.push('question')
+      if(this.selectedNumberOfQuestions > 0 && 
+      this.selectedNumberOfQuestions <= 50 &&
+      this.selectedDifficulty !== '' &&
+      this.selectedCategory !== '') {
+        await this.fetchQuestions()
+        this.$router.push('question')
+      }
+      else {
+        this.error = 'Please select game settings'
+      }
+     
     }
 	},
 	computed: {
-		...mapState(['categories'])
+		...mapState([
+      'categories', 
+      'selectedDifficulty', 
+      'selectedCategory', 
+      'selectedNumberOfQuestions'])
 	},
   created() {
     this.fetchToken()
@@ -41,7 +56,8 @@ export default {
   },
   data() {
     return {
-      difficulties: ['Easy', 'Medium', 'Hard']
+      difficulties: ['Easy', 'Medium', 'Hard'],
+      error: ''
     }
   }
 }
@@ -96,5 +112,11 @@ export default {
     color: rgb(200 145 248);
     transition: 0.3s; 
     cursor: pointer;
+  }
+  .error {
+    position: absolute;
+    top: 105%;
+    left: 42%;
+    color: red;
   }
 </style>

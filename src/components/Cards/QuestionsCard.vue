@@ -2,6 +2,7 @@
   <div class="card">
     <h1 class="title">{{ title }}</h1>
     <input class="numberOfQuestionsInput" type="text" name="numberOfQuestions" @change="onChange($event) " v-model="numberOfQuestions">
+    <p class="error" v-if="numberOfQuestions > 50"> Invalid amount, select between 2-50</p>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import { mapMutations } from 'vuex'
     methods: {
       ...mapMutations(['setSelectedNumberOfQuestions']),
       onChange() {
+        // Send selected amount of questions to vuex state
         this.setSelectedNumberOfQuestions(this.numberOfQuestions)
       }
     },
@@ -56,5 +58,9 @@ import { mapMutations } from 'vuex'
     box-shadow: 0 4px 20px 0 rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #fff;
+  }
+  .error {
+    color: red;
+    font-size: 12px;
   }
 </style>

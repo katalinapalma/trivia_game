@@ -21,9 +21,9 @@ import { mapMutations } from 'vuex'
     methods: {
       ...mapMutations(['setSelectedCategory']),
       saveId(id) {
+        // Send selected category to vuex state
         this.setSelectedCategory(id)
       }
-
     },
   }
 </script>

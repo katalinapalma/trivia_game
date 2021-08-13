@@ -36,11 +36,13 @@ export default {
     decodeBase64,
     ...mapMutations(['setSelectedAnswer']),
     saveAnswer(answer) {
+      // Send selected answer to vuex state
       this.setSelectedAnswer(answer)
     },
   },
   computed: {
     answers() {
+      // Shuffles the correct answer with incorrect answers, so correct answer will get different position.
       let shuffleArr = []
       this.question.incorrect_answers.map(q =>  {
         shuffleArr.push(q);
