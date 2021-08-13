@@ -1,16 +1,26 @@
 <template>
   <div class="card">
     <h1 class="title">{{ title }}</h1>
-    <input class="numberOfQuestionsInput" type="text" name="numberOfQuestions" v-model="numberOfQuestions">
+    <input class="numberOfQuestionsInput" type="text" name="numberOfQuestions" @change="onChange($event) " v-model="numberOfQuestions">
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
   export default {
     name: 'QuestionsCard',
     props: {
       title: String,
     },
+    methods: {
+      ...mapMutations(['setSelectedNumberOfQuestions']),
+      onChange() {
+        this.setSelectedNumberOfQuestions(this.numberOfQuestions)
+        console.log(this.numberOfQuestions);
+      }
+    },
+    
     data() {
       return {
         numberOfQuestions: ''

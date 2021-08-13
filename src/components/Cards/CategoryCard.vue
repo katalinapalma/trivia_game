@@ -3,19 +3,28 @@
     <h1 class="title">{{ title }}</h1>
     <select name="category" v-for="(category, i) in categories" :key="i" class="select">
       <option value="category">{{ defaultOption }}</option>
-      <option class="categoryName" v-for="(option, i) in category" :key="i">{{ option.name }}</option>
+      <option class="categoryName" v-for="(option, i) in category" :key="i" @click="saveId(option.id)">{{ option.name }}</option>
     </select> 
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
   export default {
     name: 'CategoryCard',
     props: {
       title: String,
       defaultOption: String,
       categories: Object
-    }
+    },
+    methods: {
+      ...mapMutations(['setSelectedCategory']),
+      saveId(id) {
+        this.setSelectedCategory(id)
+      }
+
+    },
   }
 </script>
 

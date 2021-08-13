@@ -1,21 +1,36 @@
 <template>
   <div class="card">
     <h1 class="title">{{ title }}</h1>
-    <select name="category" class="select">
+    <select name="category" class="select" @change="onChange($event)" v-model="selectedDifficulty">
       <option value="category">{{ defaultOption }}</option>
       <option class="difficulty" value="easy">Easy</option>
-      <option class="difficulty" value="easy">Medium</option>
-      <option class="difficulty" value="easy">Hard</option>
+      <option class="difficulty" value="medium">Medium</option>
+      <option class="difficulty" value="hard">Hard</option>
     </select> 
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
   export default {
     name: 'DifficultyCard',
     props: {
       title: String,
       defaultOption: String,
+    },
+    methods: {
+      ...mapMutations(['setSelectedDifficulty']),
+      onChange(event) {
+        console.log(event.target.value);
+        console.log(this.selectedDifficulty);
+        this.setSelectedDifficulty(this.selectedDifficulty)
+      }
+    },
+    data() {
+      return {
+        selectedDifficulty: ''
+      }
     }
   }
 </script>

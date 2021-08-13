@@ -10,6 +10,9 @@ export default new Vuex.Store({
         categories: null,
         userAnswers: '',
         score: 0,
+        selectedNumberOfQuestions: 0,
+        selectedDifficulty: null,
+        selectedCategory: '',
         error: ''
     },
     mutations: {
@@ -25,13 +28,22 @@ export default new Vuex.Store({
         setScore: (state, payload) => {
             state.score += payload;
         },
+        setSelectedNumberOfQuestions: (state, payload) => {
+            state.selectedNumberOfQuestions = payload;
+        },
+        setSelectedDifficulty: (state, payload) => {
+            state.selectedDifficulty = payload;
+        },
+        setSelectedCategory: (state, payload) => {
+            state.selectedCategory = payload;
+        },
         setError: (state, payload) => {
             state.error = payload;
         }
     },
     actions: {
-        async fetchQuestions({commit}) {
-            const questions = await fetch(BASE_API_URL + '/api.php?amount=10');
+        async fetchQuestions({commit, state}, ) {
+            const questions = await fetch(BASE_API_URL + `/api.php?amount=${state.selectedNumberOfQuestions}&difficulty=${state.selectedDifficulty}&category=${state.selectedCategory}`);
             const response = await questions.json()
             const { results } = response;
             commit('setQuestions', results);
