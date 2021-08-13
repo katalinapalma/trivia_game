@@ -13,6 +13,8 @@ export default new Vuex.Store({
         selectedNumberOfQuestions: 0,
         selectedDifficulty: null,
         selectedCategory: '',
+        token: '',
+        selectedAnswer: '',
         error: ''
     },
     mutations: {
@@ -37,13 +39,19 @@ export default new Vuex.Store({
         setSelectedCategory: (state, payload) => {
             state.selectedCategory = payload;
         },
+        setToken: (state, payload) => {
+            state.token = payload;
+        },
+        setSelectedAnswer: (state, payload) => {
+            state.selectedAnswer = payload;
+        },
         setError: (state, payload) => {
             state.error = payload;
         }
     },
     actions: {
         async fetchQuestions({commit, state}, ) {
-            const questions = await fetch(BASE_API_URL + `/api.php?amount=${state.selectedNumberOfQuestions}&difficulty=${state.selectedDifficulty}&category=${state.selectedCategory}`);
+            const questions = await fetch(BASE_API_URL + `/api.php?amount=${state.selectedNumberOfQuestions}&difficulty=${state.selectedDifficulty}&category=${state.selectedCategory}&token=${state.token.token}`);
             const response = await questions.json()
             const { results } = response;
             commit('setQuestions', results);
@@ -52,9 +60,15 @@ export default new Vuex.Store({
             const categories = await fetch(BASE_API_URL + '/api_category.php')
             const response = await categories.json()
             commit('setCategories', response);
+        },
+        async fetchToken({commit}) {
+            const token = await fetch(BASE_API_URL + '/api_token.php?command=request')
+            const response = await token.json()
+            commit('setToken', response)
+        },
+        resetScore({state}) {
+            state.score = 0
         }
-        /* async fetchDifficulties({commit}) {
-            const difficulties = await fetch(BASE_API_URL + '&difficulty='+ difficulty)
-        } */
+        
     }
 })

@@ -2,14 +2,14 @@
   <div class="card">
     <div class="questionsDiv">
       <p class="question">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi voluptatum vitae quia nisi! Velit adipisci in?
+        {{decodeString(question.question)}}
       </p>
       <div class="answers">
         <p class="correctAnswer">
-          Correct answer: Lorem ipsum dolor.
+          Correct answer: {{decodeString(question.correct_answer)}}
         </p>
         <p class="yourAnswer">
-          Your answer: Lorem ipsum dolor.
+          Your answer: {{decodeString(userAnswers[index])}}
         </p>
       </div>
     </div>
@@ -17,8 +17,29 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
   export default {
-    name: 'ResultCard'
+    name: 'ResultCard',
+    props: {
+      question: Object,
+      index: Number,
+    },
+    methods: {
+      decodeString(str){
+        if (typeof(str) == "string") {
+          str = str.replace(/&gt;/ig, ">");
+          str = str.replace(/&lt;/ig, "<");
+          str = str.replace(/&#039;/g, "'");
+          str = str.replace(/&quot;/ig, '"');
+          str = str.replace(/&Uuml;/ig, '"');
+          str = str.replace(/&amp;/ig, '&'); 
+        }
+        return str;
+      }
+    },
+    computed: {
+      ...mapState(['userAnswers'])
+    }
   }
 </script>
 

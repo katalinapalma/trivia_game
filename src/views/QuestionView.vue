@@ -1,7 +1,6 @@
 <template>
 	<div v-if="questions" class="questionWrapper">
-		<!-- <h1>Question screen</h1> -->
-		<Question :question="currentQuestion"/>
+		<Question :question="currentQuestion" :index="index"/>
 			
 		<button class="nextQuestionBtn" @click="nextQuestion">{{ lastQuestion ? 'See result' : 'Next' }}</button>
 	</div>
@@ -18,12 +17,15 @@ export default {
 	},
 	methods: {
 		...mapActions(['fetchQuestions']),
-		...mapMutations(['setScore']),
+		...mapMutations(['setScore', 'setUserAnswers']),
 		nextQuestion() {
+			this.setUserAnswers([...this.userAnswers, this.selectedAnswer])
 			if(this.userAnswers[this.userAnswers.length-1] === this.questions[this.index].correct_answer) {
 				this.setScore(10)
 			}
+			
 			this.index += 1;
+
 			if(this.lastQuestion === true)
 				this.$router.push('Result')
 			if(this.index === this.questions.length-1) {
@@ -32,7 +34,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapState(['questions', 'userAnswers', 'score']),
+		...mapState(['questions', 'userAnswers', 'score', 'selectedAnswer']),
 		currentQuestion() {
 			return this.questions[this.index]
 		}

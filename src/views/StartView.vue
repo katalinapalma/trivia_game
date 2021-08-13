@@ -25,15 +25,16 @@ export default {
   },
 	methods: {
 		...mapMutations(['setCategories']),
-		...mapActions(['fetchCategories']),
+		...mapActions(['fetchCategories', 'fetchToken']),
     startGame() {
-      this.$router.push('Question')
+      this.$router.push('question')
     }
 	},
 	computed: {
 		...mapState(['categories'])
 	},
   created() {
+    this.fetchToken()
     this.fetchCategories()
   }
 }

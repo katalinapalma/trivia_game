@@ -17,7 +17,6 @@ import { mapMutations } from 'vuex'
       ...mapMutations(['setSelectedNumberOfQuestions']),
       onChange() {
         this.setSelectedNumberOfQuestions(this.numberOfQuestions)
-        console.log(this.numberOfQuestions);
       }
     },
     

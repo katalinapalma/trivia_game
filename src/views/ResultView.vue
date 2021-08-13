@@ -1,5 +1,7 @@
 <template>
   <div>
+    <button @click="startPage">Start page</button>
+    <button @click="replayGame">Replay game</button>
     <div class="backgroundWrapper">
       <div class="yourResultDiv">
         <h1 class="yourResultTitle">Your Result</h1>
@@ -8,8 +10,8 @@
       <div class="titleWrapper">
         <h2 class="questionsTitle">Questions & Answers</h2>
       </div>
-      <div class="cardWrapper">
-        <ResultCard />
+      <div class="cardWrapper" v-for="(question, i) in questions" :key="question.id">
+        <ResultCard :question="question" :index="i"/>
       </div>
     </div>
   </div>
@@ -17,17 +19,26 @@
 
 <script>
   import ResultCard from '../components/Cards/ResultCard.vue'
-  import { mapState, mapMutations } from 'vuex'
+  import { mapState, mapMutations, mapActions } from 'vuex'
 
   export default {
     components: {
       ResultCard
     },
     methods: {
-    ...mapMutations(['setScore']),
+    ...mapMutations(['setScore', 'setUserAnswers']),
+    ...mapActions(['resetScore']),
+    startPage() {
+      this.$router.push('/')
+    },
+    replayGame() {
+      this.setUserAnswers('')
+      this.resetScore()
+      this.$router.push('question')
+    }
     },
     computed: {
-		...mapState(['score']),
+		...mapState(['score', 'questions']),
 	},
   }
 </script>
@@ -79,7 +90,7 @@
   }
   .cardWrapper {
     width: 100%;
-    position: absolute;
+    position: relative;
     left: 0;
     display: flex;
     justify-content: center;

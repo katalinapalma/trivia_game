@@ -22,18 +22,38 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 import shuffle from 'lodash.shuffle'
 
 export default {
   name: 'Question',
   props: {
     question: Object,
+    index: Number
   },
   methods: {
-    ...mapMutations(['setUserAnswers']),
+    ...mapMutations(['setSelectedAnswer']),
     saveAnswer(answer) {
-      this.setUserAnswers([...this.userAnswers,answer])
+
+      this.setSelectedAnswer(answer)
+       /*  if(this.userAnswers.length > this.index) {
+          if(this.userAnswers.length === 1) {
+            this.setUserAnswers('')
+            this.setUserAnswers([...this.userAnswers,answer])
+          }
+          else {
+            console.log(this.userAnswers.slice(this.userAnswers.length-1 ,1));
+             this.setUserAnswers(this.userAnswers.slice(this.userAnswers.length-1 ,1))
+          this.setUserAnswers([...this.userAnswers,answer])
+          console.log('runs');
+          }
+         
+        }
+        else {
+          this.setUserAnswers([...this.userAnswers,answer])
+        } */
+      
+      
     },
     decodeString(str){
             if (typeof(str) == "string") {
@@ -41,15 +61,14 @@ export default {
                 str = str.replace(/&lt;/ig, "<");
                 str = str.replace(/&#039;/g, "'");
                 str = str.replace(/&quot;/ig, '"');
-                // hittade &Uuml; som måste göras om 
-                str = str.replace(/&amp;/ig, '&'); /* must do &amp; last */
+                str = str.replace(/&Uuml;/ig, '"');
+                str = str.replace(/&amp;/ig, '&'); 
             }
             return str;
         }
     
   },
   computed: {
-    ...mapState(['userAnswers']),
     answers() {
       let shuffleArr = []
 
