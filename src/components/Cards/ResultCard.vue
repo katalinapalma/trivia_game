@@ -18,17 +18,7 @@
 
 <script>
   export default {
-    name: 'ResultCard',
-    data: () => {
-      return {
-        show: false,
-      }
-    },
-    methods: {
-      showAnswer() {
-        this.show = !this.show;
-      }
-    }
+    name: 'ResultCard'
   }
 </script>
 

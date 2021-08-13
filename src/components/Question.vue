@@ -1,8 +1,5 @@
 <template>
   <div>
-    <!-- <h2>
-      Question component
-    </h2> -->
     <div class="questionContainer">
       <div class="questionHeader">
         <h2 class="question">
@@ -44,6 +41,7 @@ export default {
                 str = str.replace(/&lt;/ig, "<");
                 str = str.replace(/&#039;/g, "'");
                 str = str.replace(/&quot;/ig, '"');
+                // hittade &Uuml; som måste göras om 
                 str = str.replace(/&amp;/ig, '&'); /* must do &amp; last */
             }
             return str;

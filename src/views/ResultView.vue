@@ -5,9 +5,10 @@
         <h1 class="yourResultTitle">Your Result</h1>
         <h2 class="result">{{ this.score }}</h2>
       </div>
-
-      <div class="cardWrapper">
+      <div class="titleWrapper">
         <h2 class="questionsTitle">Questions & Answers</h2>
+      </div>
+      <div class="cardWrapper">
         <ResultCard />
       </div>
     </div>
@@ -17,7 +18,6 @@
 <script>
   import ResultCard from '../components/Cards/ResultCard.vue'
   import { mapState, mapMutations } from 'vuex'
-
 
   export default {
     components: {
@@ -67,7 +67,7 @@
   .result {
     font-family: Avenir, Helvetica, Arial, sans-serif;
   }
-  .cardWrapper {
+  .titleWrapper {
     width: 100%;
     position: absolute;
     left: 0;
@@ -76,6 +76,16 @@
     align-items: center;
     flex-direction: column;
     top: 300px;
+  }
+  .cardWrapper {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 350px;
   }
   .questionsTitle {
     margin-top: 50px;
