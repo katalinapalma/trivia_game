@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button @click="startPage">Start page</button>
-    <button @click="replayGame">Replay game</button>
+    <button class="startPageBtn" @click="startPage">Start page</button>
+    <button class="replayGameBtn" @click="replayGame">Replay game</button>
     <div class="backgroundWrapper">
       <div class="yourResultDiv">
         <h1 class="yourResultTitle">Your Result</h1>
@@ -105,5 +105,38 @@
     text-transform: uppercase;
     font-size: 30px;
     font-weight: 500;
+  }
+  .startPageBtn {
+    border: 2px solid none;
+    border-radius: 5px;
+    background-color: rgb(176, 214, 126);
+    color:rgb(186, 62, 197);
+    cursor: pointer;
+    float:left ;
+    letter-spacing: 0.1em;
+    font-size: 16px;
+    margin: 9px;
+    padding: 12px;
+    -webkit-text-stroke-color: #a4d881;
+    text-shadow: 1px 0px #b7fc8a, 0px 0.5px 0px #737373;
+  }
+  
+  .replayGameBtn {
+    border: 2px solid none;
+    border-radius: 5px;
+    background-color: rgb(176, 214, 126);
+    color:cornflowerblue;
+    cursor: pointer;
+    float:right;
+    letter-spacing: 0.1em;
+    font-size: 16px;
+    margin: 9px;
+    padding: 12px;
+    -webkit-text-stroke-color: #a4d881;
+    text-shadow: 0.5px 0px #b7fc8a, 0px 0.5px 0px #737373;
+  }
+  .replayGameBtn:hover, .startPageBtn:hover {
+    padding: 12px;
+    border: 2px solid rgb(38, 10, 160);
   }
 </style>

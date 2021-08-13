@@ -36,32 +36,21 @@ export default {
     saveAnswer(answer) {
 
       this.setSelectedAnswer(answer)
-       /*  if(this.userAnswers.length > this.index) {
-          if(this.userAnswers.length === 1) {
-            this.setUserAnswers('')
-            this.setUserAnswers([...this.userAnswers,answer])
-          }
-          else {
-            console.log(this.userAnswers.slice(this.userAnswers.length-1 ,1));
-             this.setUserAnswers(this.userAnswers.slice(this.userAnswers.length-1 ,1))
-          this.setUserAnswers([...this.userAnswers,answer])
-          console.log('runs');
-          }
-         
-        }
-        else {
-          this.setUserAnswers([...this.userAnswers,answer])
-        } */
-      
+     
       
     },
     decodeString(str){
+      
             if (typeof(str) == "string") {
                 str = str.replace(/&gt;/ig, ">");
                 str = str.replace(/&lt;/ig, "<");
                 str = str.replace(/&#039;/g, "'");
+                str = str.replace(/&rsquo;/ig, "'");
                 str = str.replace(/&quot;/ig, '"');
-                str = str.replace(/&Uuml;/ig, '"');
+                str = str.replace(/&eacute;/ig, 'É');
+                str = str.replace(/&ldquo;/ig, '"');
+                str = str.replace(/&Uuml;/ig, 'ú');
+                str = str.replace(/&rdquo;/ig, '"');
                 str = str.replace(/&amp;/ig, '&'); 
             }
             return str;

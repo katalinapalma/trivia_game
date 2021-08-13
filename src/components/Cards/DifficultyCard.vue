@@ -1,8 +1,8 @@
 <template>
   <div class="card">
     <h1 class="title">{{ title }}</h1>
-    <select name="category" class="select" @change="onChange($event)" v-model="selectedDifficulty">
-      <option value="category">{{ defaultOption }}</option>
+    <select name="difficulty" class="select" @change="onChange($event)" >
+      <option value="difficulty">{{ defaultOption }}</option>
       <option class="difficulty" value="easy">Easy</option>
       <option class="difficulty" value="medium">Medium</option>
       <option class="difficulty" value="hard">Hard</option>
@@ -22,16 +22,9 @@ import { mapMutations } from 'vuex'
     methods: {
       ...mapMutations(['setSelectedDifficulty']),
       onChange(event) {
-        console.log(event.target.value);
-        console.log(this.selectedDifficulty);
-        this.setSelectedDifficulty(this.selectedDifficulty)
+        this.setSelectedDifficulty(event.target.value)
       }
     },
-    data() {
-      return {
-        selectedDifficulty: ''
-      }
-    }
   }
 </script>
 

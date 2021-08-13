@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <h1 class="title">{{ title }}</h1>
-    <select name="category" v-for="(category, i) in categories" :key="i" class="select">
+    <select class="select" name="category" v-for="(category, i) in categories" :key="i">
       <option value="category">{{ defaultOption }}</option>
       <option class="categoryName" v-for="(option, i) in category" :key="i" @click="saveId(option.id)">{{ option.name }}</option>
     </select> 

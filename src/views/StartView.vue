@@ -4,7 +4,7 @@
       <h1 class="title">Trivia Game</h1>
       <div class="cardWrapper">
         <Card title="Category" defaultOption="Choose category" :categories="this.categories" />
-        <DifficultyCard title="Difficulty" defaultOption="Choose difficulty" />
+        <DifficultyCard title="Difficulty" defaultOption="Choose difficulty" :difficulties="this.difficulties" />
         <QuestionsCard title="Number of questions" />
       </div>
       <button class="startBtn" @click="startGame">Start</button>
@@ -36,6 +36,11 @@ export default {
   created() {
     this.fetchToken()
     this.fetchCategories()
+  },
+  data() {
+    return {
+      difficulties: ['Easy', 'Medium', 'Hard']
+    }
   }
 }
 </script>
