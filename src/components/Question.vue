@@ -3,13 +3,13 @@
     <div class="questionContainer">
       <div class="questionHeader">
         <h2 class="question">
-          {{decodeString(question.question)}}
+          {{decodeBase64(question.question)}}
         </h2>
       </div>
       <div class="questionChoices">
         <ol class="questionChoicesList">
           <li class="questionChoice" v-for="answer in answers" :key="answer">
-            {{decodeString(answer)}}
+            {{decodeBase64(answer)}}
             <label>
               <input @click="saveAnswer(answer)" name="answer" type="radio">
               <span class="checkmark"></span>
@@ -24,6 +24,7 @@
 <script>
 import { mapMutations } from 'vuex'
 import shuffle from 'lodash.shuffle'
+import decodeBase64 from '../decodeBase64'
 
 export default {
   name: 'Question',
@@ -32,40 +33,21 @@ export default {
     index: Number
   },
   methods: {
+    decodeBase64,
     ...mapMutations(['setSelectedAnswer']),
     saveAnswer(answer) {
-
+      // Send selected answer to vuex state
       this.setSelectedAnswer(answer)
-     
-      
     },
-    decodeString(str){
-      
-            if (typeof(str) == "string") {
-                str = str.replace(/&gt;/ig, ">");
-                str = str.replace(/&lt;/ig, "<");
-                str = str.replace(/&#039;/g, "'");
-                str = str.replace(/&rsquo;/ig, "'");
-                str = str.replace(/&quot;/ig, '"');
-                str = str.replace(/&eacute;/ig, 'É');
-                str = str.replace(/&ldquo;/ig, '"');
-                str = str.replace(/&Uuml;/ig, 'ú');
-                str = str.replace(/&rdquo;/ig, '"');
-                str = str.replace(/&amp;/ig, '&'); 
-            }
-            return str;
-        }
-    
   },
   computed: {
     answers() {
+      // Shuffles the correct answer with incorrect answers, so correct answer will get different position.
       let shuffleArr = []
-
       this.question.incorrect_answers.map(q =>  {
         shuffleArr.push(q);
       })
       shuffleArr.push(this.question.correct_answer)
-
       let shuffleAnswer = shuffle(shuffleArr)
 
       return shuffleAnswer

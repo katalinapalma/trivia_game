@@ -74,6 +74,5 @@ export default new Vuex.Store({
         resetScore({state}) {
             state.score = 0
         }
-        
     }
 })

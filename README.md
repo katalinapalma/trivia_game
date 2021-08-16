@@ -1,24 +1,16 @@
-# trivia_game
+# JavaScript Assignment 2 
 
-## Project setup
-```
-npm install
-```
+## Trivia Game
+An online trivia game using Vue.js framework. 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Project structure
+The project consists of three pages, Start, Question and Result. 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Start page, is where the user can set the game settings. The user can choose a category, difficulty and the numer of questions to answer. When the user clicks on the Start button, the user gets re-directed to the Question page.
 
-### Lints and fixes files
-```
-npm run lint
-```
+The question page displays one question at a time. When the user has answered a question and clicks on the Next button, a new question appears. When all questions are answered the user can click on a Show result button to get re-directed to the Result page.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+The result page shows the user's score, all questions the user answered along with the correct answer and answer the user chose. The user also has the option to replay the game with the same category and difficulty settings but with different questions or to go back to the Start page.
+
+## Check out the game 
+https://still-meadow-30875.herokuapp.com/

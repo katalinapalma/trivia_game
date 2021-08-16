@@ -22,6 +22,7 @@ import { mapMutations } from 'vuex'
     methods: {
       ...mapMutations(['setSelectedDifficulty']),
       onChange(event) {
+        // Send selected difficulty to vuex state
         this.setSelectedDifficulty(event.target.value)
       }
     },

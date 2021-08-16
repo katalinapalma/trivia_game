@@ -8,7 +8,7 @@
 
 <script>
 import Question from '../components/Question.vue'
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
 	name: 'QuestionScreen',
@@ -16,19 +16,25 @@ export default {
 		'Question': Question
 	},
 	methods: {
-		...mapActions(['fetchQuestions']),
 		...mapMutations(['setScore', 'setUserAnswers']),
 		nextQuestion() {
+			// Saves user answers for each question
 			this.setUserAnswers([...this.userAnswers, this.selectedAnswer])
+			// If answer is correct, add 10 points to score
 			if(this.userAnswers[this.userAnswers.length-1] === this.questions[this.index].correct_answer) {
 				this.setScore(10)
 			}
-			
+			// Keep track of question #
 			this.index += 1;
-
+			// If user has chosen only to get 1 questions, set that questions as the last question
+			if(this.questions.length === 1) {
+				this.lastQuestion = true
+			}
+			// When on last question, go to results instead of next question.
 			if(this.lastQuestion === true)
-				this.$router.push('Result')
-			if(this.index === this.questions.length-1) {
+				this.$router.push('result')
+			// If next question is the last one, mark it as last question
+			if(this.index === this.questions.length-1 ) {
 				this.lastQuestion = true
 			}
 		}
@@ -39,9 +45,7 @@ export default {
 			return this.questions[this.index]
 		}
 	},
-	async created() {
-		await this.fetchQuestions()
-	},
+	
 	data() {
 		return {
 			index: 0,

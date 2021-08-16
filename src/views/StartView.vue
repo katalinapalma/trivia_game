@@ -7,7 +7,9 @@
         <DifficultyCard title="Difficulty" defaultOption="Choose difficulty" :difficulties="this.difficulties" />
         <QuestionsCard title="Number of questions" />
       </div>
+      <p class="error" v-if="error">{{error}}</p>
       <button class="startBtn" @click="startGame">Start</button>
+      
     </div>
   </div>
 </template>
@@ -17,6 +19,7 @@ import Card from '../components/Cards/CategoryCard.vue'
 import DifficultyCard from '../components/Cards/DifficultyCard.vue'
 import QuestionsCard from '../components/Cards/QuestionsCard.vue'
 import { mapState, mapMutations, mapActions } from 'vuex'
+
 export default {
   components: {
     Card,
@@ -24,14 +27,28 @@ export default {
     QuestionsCard
   },
 	methods: {
-		...mapMutations(['setCategories']),
-		...mapActions(['fetchCategories', 'fetchToken']),
-    startGame() {
-      this.$router.push('question')
+		...mapMutations(['setCategories', 'setQuestionsFetched']),
+		...mapActions(['fetchCategories', 'fetchToken','fetchQuestions']),
+    async startGame() {
+      if(this.selectedNumberOfQuestions > 0 && 
+      this.selectedNumberOfQuestions <= 50 &&
+      this.selectedDifficulty !== '' &&
+      this.selectedCategory !== '') {
+        await this.fetchQuestions()
+        this.$router.push('question')
+      }
+      else {
+        this.error = 'Please select game settings'
+      }
+     
     }
 	},
 	computed: {
-		...mapState(['categories'])
+		...mapState([
+      'categories', 
+      'selectedDifficulty', 
+      'selectedCategory', 
+      'selectedNumberOfQuestions'])
 	},
   created() {
     this.fetchToken()
@@ -39,7 +56,8 @@ export default {
   },
   data() {
     return {
-      difficulties: ['Easy', 'Medium', 'Hard']
+      difficulties: ['Easy', 'Medium', 'Hard'],
+      error: ''
     }
   }
 }
@@ -47,7 +65,7 @@ export default {
 
 <style scoped>
   .title {
-    font-size: 10em;
+    font-size: 8em;
     color: #fff;
     top: 60px;
     width: 100%;
@@ -94,5 +112,11 @@ export default {
     color: rgb(200 145 248);
     transition: 0.3s; 
     cursor: pointer;
+  }
+  .error {
+    position: absolute;
+    top: 105%;
+    left: 42%;
+    color: red;
   }
 </style>
