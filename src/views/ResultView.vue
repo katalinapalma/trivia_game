@@ -29,6 +29,8 @@
     ...mapMutations(['setScore', 'setUserAnswers', 'setQuestions']),
     ...mapActions(['resetScore', 'fetchQuestions']),
     startPage() {
+      this.setUserAnswers('')
+      this.resetScore()
       this.$router.push('/')
     },
     async replayGame() {
