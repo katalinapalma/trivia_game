@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         questions: null,
-        // questionsFetched: false,
+        questionsFetched: false,
         categories: null,
         userAnswers: '',
         score: 0,
@@ -46,20 +46,20 @@ export default new Vuex.Store({
         setSelectedAnswer: (state, payload) => {
             state.selectedAnswer = payload;
         },
-        // setQuestionsFetched: (state, payload) => {
-        //     state.questionsFetched = payload;
-        // },
+        setQuestionsFetched: (state, payload) => {
+             state.questionsFetched = payload;
+         },
         setError: (state, payload) => {
             state.error = payload;
         }
     },
     actions: {
         async fetchQuestions({commit, state}, ) {
-            const questions = await fetch(BASE_API_URL + `/api.php?amount=${state.selectedNumberOfQuestions}&difficulty=${state.selectedDifficulty}&category=${state.selectedCategory}&token=${state.token.token}`);
+            const questions = await fetch(BASE_API_URL + `/api.php?amount=${state.selectedNumberOfQuestions}&difficulty=${state.selectedDifficulty}&category=${state.selectedCategory}&token=${state.token.token}&encode=base64`);
             const response = await questions.json()
             const { results } = response
             commit('setQuestions', results)
-            // commit('setQuestionsFetched', true)
+            commit('setQuestionsFetched', true)
         },
         async fetchCategories({commit}) {
             const categories = await fetch(BASE_API_URL + '/api_category.php')
