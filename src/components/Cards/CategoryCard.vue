@@ -3,7 +3,7 @@
     <h1 class="title">{{ title }}</h1>
     <select class="select" name="category" v-for="(category, i) in categories" :key="i" @change="saveId">
       <option value="category">{{ defaultOption }}</option>
-      <option class="categoryName" v-for="(option, i) in category" :key="i" >{{ option.name }}</option>
+      <option class="categoryName" v-for="(option, i) in category" :value="option.id" :key="i" >{{ option.name }}</option>
     </select> 
   </div>
 </template>
@@ -22,13 +22,7 @@ import { mapMutations } from 'vuex'
       ...mapMutations(['setSelectedCategory']),
       saveId(e) {
         // Send selected category to vuex state
-        for (const key in this.categories) {
-          console.log(key);
-          for (const innerKey in key) {
-            console.log(this.categories[innerKey]);
-            console.log(innerKey);
-          }
-        }
+        
 
         this.setSelectedCategory(e.target.value)
       }
